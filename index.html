@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formation en Trading Binaire | Pocket Bip</title>
+<meta name="description" content="Formation en trading binaire de 2 semaines avec Pocket Bip, en direct du lundi au vendredi. Début le 2 novembre 2026. Participation : 70 $.">
+<meta name="theme-color" content="#0a4d2e">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+  :root{
+    --white:#ffffff;
+    --paper:#f3f9f5;
+    --ink:#0d1b12;
+    --muted:#5b6b61;
+    --line:#e2ece5;
+    --green:#0fa958;
+    --green-hi:#12c166;
+    --deep:#0a4d2e;
+    --deeper:#06331e;
+    --red:#e5352b;
+    --red-soft:#fdeeec;
+    --lime:#a6f08f;
+    --ease:cubic-bezier(.2,.7,.2,1);
+    --display:'Bricolage Grotesque',system-ui,sans-serif;
+    --body:'Figtree',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
+  .wrap{width:min(1120px,100% - 44px);margin:0 auto}
+  section{scroll-margin-top:76px}
+  h1,h2,h3{font-family:var(--display);line-height:1.04;letter-spacing:-.025em}
+  h2{font-size:clamp(32px,5vw,56px);font-weight:800}
+  .lead{color:var(--muted);font-size:clamp(17px,2vw,19px);max-width:560px}
+  .ico{width:1em;height:1em;fill:currentColor;flex:none}
+
+  /* ---------- scroll progress ---------- */
+  #bar{position:fixed;inset:0 0 auto 0;height:4px;z-index:60;background:linear-gradient(90deg,var(--green),var(--red));transform-origin:left;transform:scaleX(0)}
+
+  /* ---------- buttons ---------- */
+  .btn{--bg:var(--green);position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:12px;
+    padding:14px 26px 14px 16px;border-radius:999px;font-weight:700;font-size:16px;line-height:1;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease),color .3s;will-change:transform}
+  .btn .dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:17px;transition:transform .5s var(--ease)}
+  .btn:hover .dot{transform:rotate(-12deg) scale(1.12)}
+  .btn:active{transform:scale(.97)}
+  .btn-main{background:var(--green);color:#fff;box-shadow:0 12px 26px -10px rgba(15,169,88,.75)}
+  .btn-main .dot{background:rgba(255,255,255,.22)}
+  .btn-main::before{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;z-index:-1;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sheen 4.5s var(--ease) infinite}
+  .btn-main:hover{box-shadow:0 18px 34px -10px rgba(15,169,88,.85);transform:translateY(-3px)}
+  .btn-main:hover::before{animation-duration:1.1s}
+  @keyframes sheen{0%,55%{left:-60%}100%{left:130%}}
+  .btn-line{border:2px solid var(--ink);color:var(--ink);padding:12px 26px}
+  .btn-line::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+  .btn-line:hover{color:#fff}
+  .btn-line:hover::before{transform:scaleX(1)}
+  .btn-light{background:#fff;color:var(--deep);box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+  .btn-light .dot{background:var(--green);color:#fff}
+  .btn-light:hover{transform:translateY(-3px)}
+  .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rip .7s var(--ease) forwards;pointer-events:none;z-index:-1}
+  .btn-line .ripple{background:rgba(13,27,18,.18)}
+  @keyframes rip{to{transform:scale(1);opacity:0}}
+
+  /* ---------- nav ---------- */
+  nav{position:fixed;top:4px;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:14px 0}
+  nav.stuck{background:rgba(255,255,255,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:8px 0}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .logo{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em}
+  .links{display:flex;gap:6px}
+  .links a{position:relative;padding:8px 14px;font-weight:600;font-size:15px;border-radius:999px;transition:background .25s,color .25s}
+  .links a:hover{background:var(--paper);color:var(--deep)}
+  .nav-cta{padding:9px 20px 9px 10px;font-size:15px}
+  .nav-cta .dot{width:28px;height:28px;font-size:14px}
+  .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);place-items:center}
+  .burger i{display:block;width:20px;height:2px;background:var(--ink);position:relative;transition:.3s}
+  .burger i::before,.burger i::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--ink);transition:.3s}
+  .burger i::before{top:-6px}.burger i::after{top:6px}
+  .burger[aria-expanded=true] i{background:transparent}
+  .burger[aria-expanded=true] i::before{top:0;transform:rotate(45deg)}
+  .burger[aria-expanded=true] i::after{top:0;transform:rotate(-45deg)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:150px 0 90px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-2;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000 0,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000 0,transparent 75%)}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);z-index:-1;opacity:.45;animation:drift 14s ease-in-out infinite alternate}
+  .blob.g{width:420px;height:420px;background:#7fe3a8;right:-80px;top:40px}
+  .blob.r{width:260px;height:260px;background:#ffb3ab;left:-60px;bottom:20px;animation-delay:-6s}
+  @keyframes drift{to{transform:translate(-50px,40px) scale(1.12)}}
+  .hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-weight:600;font-size:14px;margin-bottom:26px}
+  .pill b{width:9px;height:9px;border-radius:50%;background:var(--red);position:relative}
+  .pill b::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--red);animation:ping 1.8s ease-out infinite}
+  @keyframes ping{from{transform:scale(.5);opacity:1}to{transform:scale(1.6);opacity:0}}
+  h1{font-size:clamp(42px,7.4vw,96px);font-weight:800;letter-spacing:-.04em;line-height:.98}
+  h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+  h1 .ln span{display:block;transform:translateY(105%);animation:up 1s var(--ease) forwards}
+  h1 .ln:nth-child(2) span{animation-delay:.12s}
+  h1 .ln:nth-child(3) span{animation-delay:.24s}
+  @keyframes up{to{transform:none}}
+  .hero .lead{margin:28px 0 36px;opacity:0;animation:fade .9s .55s var(--ease) forwards}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fade .9s .7s var(--ease) forwards}
+  @keyframes fade{to{opacity:1}}
+
+  .clock{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 30px 60px -30px rgba(10,77,46,.35);opacity:0;transform:translateY(24px);animation:card .9s .5s var(--ease) forwards}
+  @keyframes card{to{opacity:1;transform:none}}
+  .clock h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}
+  .count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .count div{background:var(--deep);color:#fff;border-radius:14px;padding:14px 4px 10px;text-align:center}
+  .count div:last-child{background:var(--red)}
+  .count strong{display:block;font-family:var(--display);font-size:clamp(26px,3.4vw,38px);font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .count small{font-size:12px;opacity:.8}
+  .rows{margin-top:18px;border-top:1px solid var(--line)}
+  .rows p{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .rows p span{color:var(--muted)}
+  .rows p b{text-align:right}
+  .rows p:last-child{border:0;padding-bottom:0}
+  .rows p:last-child b{color:var(--red);font-family:var(--display);font-size:22px}
+
+  /* ---------- ticker ---------- */
+  .tape{background:var(--deep);color:#fff;overflow:hidden;padding:18px 0;border-block:4px solid var(--deeper)}
+  .tape-track{display:flex;width:max-content;animation:tape 36s linear infinite}
+  .tape:hover .tape-track{animation-play-state:paused}
+  .tape span{display:inline-flex;align-items:center;gap:10px;margin-right:46px;font-family:var(--display);font-weight:700;font-size:20px;white-space:nowrap}
+  .tape i{font-style:normal;font-size:13px}
+  .tape .up{color:var(--lime)}.tape .dn{color:#ff8e86}
+  @keyframes tape{to{transform:translateX(-50%)}}
+
+  /* ---------- sections ---------- */
+  .block{padding:120px 0}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  html:not(.js) .reveal{opacity:1;transform:none}
+
+  /* what is it */
+  .what .wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:start}
+  .what h2{position:sticky;top:110px}
+  .scrub{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.7vw,32px);line-height:1.3;letter-spacing:-.015em}
+  .scrub .w{color:#c3cfc7;transition:color .35s}
+  .scrub .w.lit{color:var(--ink)}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+  .tile{position:relative;overflow:hidden;border-radius:22px;padding:26px;border:1px solid var(--line);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+  .tile:hover{transform:translateY(-6px)}
+  .tile.up{background:var(--paper)}.tile.up:hover{box-shadow:0 24px 40px -24px rgba(15,169,88,.6)}
+  .tile.dn{background:var(--red-soft);border-color:#f6d3cf}.tile.dn:hover{box-shadow:0 24px 40px -24px rgba(229,53,43,.5)}
+  .tile h3{font-size:24px;font-weight:800;margin:46px 0 6px}
+  .tile p{font-size:15px;color:var(--muted)}
+  .tri{position:absolute;top:24px;left:26px;width:0;height:0;border-inline:16px solid transparent}
+  .up .tri{border-bottom:26px solid var(--green);animation:bob 2s ease-in-out infinite}
+  .dn .tri{border-top:26px solid var(--red);animation:bob 2s ease-in-out infinite reverse}
+  @keyframes bob{50%{transform:translateY(-7px)}}
+
+  /* programme: stacked deck */
+  .prog{background:var(--paper)}
+  .prog .head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+  .prog .head .lead{max-width:380px}
+  .stack{padding-bottom:30px}
+  .scard{position:sticky;top:calc(88px + var(--i)*14px);margin-bottom:22px;transform-origin:top center;
+    display:grid;grid-template-columns:90px 1fr 1.1fr;gap:28px;align-items:center;min-height:178px;
+    padding:34px 40px;border-radius:26px;border:1px solid var(--line);background:#fff;
+    box-shadow:0 -14px 34px -22px rgba(10,77,46,.45);transition:transform .25s linear}
+  .scard .no{font-family:var(--display);font-weight:800;font-size:15px;color:var(--muted)}
+  .scard .no b{display:block;font-size:44px;line-height:1;color:var(--green);letter-spacing:-.04em}
+  .scard h3{font-size:clamp(24px,3vw,36px);font-weight:800}
+  .scard p{color:var(--muted);font-size:17px}
+  .scard.t2{background:var(--deep);border-color:var(--deep);color:#fff}
+  .scard.t2 p,.scard.t2 .no{color:rgba(255,255,255,.72)}
+  .scard.t2 .no b{color:var(--lime)}
+  .scard.t3{background:var(--red-soft);border-color:#f6d3cf}
+  .scard.t3 .no b{color:var(--red)}
+
+  /* how to join */
+  .join .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start}
+  .join h2{margin-bottom:22px}
+  .join .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .tl{position:relative;padding-left:70px}
+  .tl::before{content:"";position:absolute;left:23px;top:8px;bottom:8px;width:3px;border-radius:3px;background:var(--line)}
+  .tl-fill{position:absolute;left:23px;top:8px;width:3px;border-radius:3px;background:linear-gradient(var(--green),var(--red));height:0}
+  .st{position:relative;padding-bottom:46px}
+  .st:last-child{padding-bottom:0}
+  .st .n{position:absolute;left:-70px;top:-4px;width:49px;height:49px;border-radius:50%;display:grid;place-items:center;
+    background:#fff;border:3px solid var(--line);font-family:var(--display);font-weight:800;font-size:19px;color:var(--muted);transition:.5s var(--ease)}
+  .st.on .n{background:var(--green);border-color:var(--green);color:#fff;transform:scale(1.1);box-shadow:0 0 0 8px rgba(15,169,88,.15)}
+  .st h3{font-size:24px;font-weight:800;margin-bottom:4px}
+  .st p{color:var(--muted)}
+
+  /* risks */
+  .risks{padding-top:0}
+  .risk{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;background:var(--red-soft);border:1px solid #f6d3cf;border-left:8px solid var(--red);border-radius:26px;padding:clamp(28px,5vw,60px)}
+  .risk h2{font-size:clamp(28px,4vw,44px)}
+  .risk .lead{margin-top:14px;color:#6b4d4a}
+  .risk ul{list-style:none;display:grid;gap:14px}
+  .risk li{position:relative;padding-left:34px;color:#3b2927;font-size:16.5px}
+  .risk li::before{content:"!";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px}
+
+  /* price */
+  .price{background:var(--paper);text-align:center}
+  .price h2{margin-bottom:46px}
+  .ring{position:relative;max-width:560px;margin:0 auto;border-radius:34px;padding:3px;background:conic-gradient(from var(--a),var(--green),var(--lime),var(--red),var(--green));animation:spin 7s linear infinite}
+  @keyframes spin{to{--a:360deg}}
+  .pc{background:linear-gradient(160deg,var(--deep),var(--deeper));color:#fff;border-radius:31px;padding:clamp(30px,5vw,54px);text-align:left}
+  .pc .tag{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px}
+  .amount{display:flex;align-items:flex-start;gap:6px;margin:18px 0 26px;font-family:var(--display);font-weight:800;line-height:.9}
+  .amount sup{font-size:clamp(30px,5vw,44px);margin-top:12px;color:var(--lime)}
+  .amount span{font-size:clamp(84px,15vw,132px);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+  .inc{list-style:none;display:grid;gap:14px;margin-bottom:34px}
+  .inc li{display:flex;gap:14px;align-items:flex-start;font-size:17px}
+  .inc svg{flex:none;width:26px;height:26px;margin-top:1px;padding:5px;border-radius:50%;background:var(--green);stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .inc svg path{stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .6s var(--ease)}
+  .inc.in svg path{stroke-dashoffset:0}
+  .inc li:nth-child(2) svg path{transition-delay:.15s}.inc li:nth-child(3) svg path{transition-delay:.3s}.inc li:nth-child(4) svg path{transition-delay:.45s}
+  .pc .btn{width:100%;justify-content:center;font-size:18px;padding:18px}
+  .pc .note{margin-top:16px;text-align:center;font-size:14px;color:rgba(255,255,255,.7)}
+
+  /* faq */
+  .faq .wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start}
+  .faq h2{position:sticky;top:110px}
+  .qa{border-bottom:1px solid var(--line)}
+  .qa:first-child{border-top:1px solid var(--line)}
+  .qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:24px 0;font-family:var(--display);font-weight:700;font-size:clamp(19px,2.2vw,23px);letter-spacing:-.015em;transition:color .25s}
+  .qa button:hover{color:var(--green)}
+  .qa .pm{flex:none;width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);position:relative;transition:.4s var(--ease)}
+  .qa .pm::before,.qa .pm::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2px;background:currentColor;transform:translate(-50%,-50%);transition:.4s var(--ease)}
+  .qa .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+  .qa.open .pm{background:var(--green);border-color:var(--green);color:#fff;transform:rotate(180deg)}
+  .qa.open .pm::after{transform:translate(-50%,-50%) rotate(0)}
+  .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+  .ans>div{overflow:hidden}
+  .ans p{color:var(--muted);padding:0 50px 26px 0}
+  .qa.open .ans{grid-template-rows:1fr}
+
+  /* final cta */
+  .final{padding:0 0 110px}
+  .final .box{position:relative;overflow:hidden;border-radius:34px;padding:clamp(40px,7vw,84px);color:#fff;text-align:center;
+    background:linear-gradient(120deg,var(--deeper),var(--deep),var(--green),var(--deep));background-size:300% 300%;animation:flow 12s ease-in-out infinite}
+  @keyframes flow{50%{background-position:100% 50%}}
+  .final h2{max-width:760px;margin:0 auto 14px}
+  .final p{opacity:.85;margin-bottom:34px}
+  .final .btn{font-size:18px;padding:16px 32px 16px 18px}
+
+  footer{border-top:1px solid var(--line);padding:56px 0 40px}
+  footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--display);font-size:17px;margin-bottom:12px}
+  footer a,footer .l{display:block;color:var(--muted);font-size:15px;margin-bottom:8px;transition:color .2s}
+  footer a:hover{color:var(--green)}
+  .fine{grid-column:1/-1;border-top:1px solid var(--line);padding-top:24px;font-size:13px;color:var(--muted)}
+
+  .wa{position:fixed;right:18px;bottom:18px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 12px 28px -8px rgba(0,0,0,.4);transition:transform .3s var(--ease)}
+  .wa:hover{transform:scale(1.1) rotate(-8deg)}
+  .wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid #25d366;animation:ping 2.2s ease-out infinite}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .links{position:fixed;inset:76px 16px auto 16px;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.25);
+      transform:translateY(-14px);opacity:0;pointer-events:none;transition:.3s var(--ease)}
+    .links.open{transform:none;opacity:1;pointer-events:auto}
+    .links a{padding:14px 16px;font-size:17px}
+    .burger{display:grid}
+    .nav-cta{display:none}
+    .hero{padding-top:120px}
+    .hero .wrap,.what .wrap,.join .wrap,.faq .wrap,.risk,footer .wrap{grid-template-columns:1fr;gap:40px}
+    .what h2,.faq h2{position:static}
+    .block{padding:84px 0}
+    .scard{grid-template-columns:1fr;gap:8px;padding:26px 24px;min-height:0;top:calc(80px + var(--i)*10px)}
+    .scard .no b{display:inline;font-size:22px;margin-right:6px}
+    .duo{grid-template-columns:1fr}
+  }
+  @media(max-width:480px){.btn{width:100%;justify-content:center}.nav-cta{display:none}}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    h1 .ln span,.hero .lead,.hero .cta-row,.clock{opacity:1!important;transform:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.2.9 4.3 2.4 5.9L3 22l5.3-2.1c1.2.4 2.4.6 3.7.6 5.5 0 10-4.1 10-9.2S17.500 2 12 2z"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 46 52"><rect x="8" y="14" width="8" height="28" rx="2" fill="#0fa958"/><rect x="11.500" y="4" width="1.500" height="46" fill="#0fa958"/><rect x="26" y="6" width="9" height="22" rx="2" fill="#e5352b"/><rect x="30" y="0" width="1.500" height="38" fill="#e5352b"/></symbol>
+</svg>
+
+<div id="bar"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#accueil"><svg class="ico" style="width:26px;height:30px"><use href="#i-logo"/></svg>Pocket Bip</a>
+    <div class="links" id="links">
+      <a href="#quoi">Le trading binaire</a>
+      <a href="#programme">Programme</a>
+      <a href="#inscription">S'inscrire</a>
+      <a href="#risques">Risques</a>
+      <a href="#faq">Questions</a>
+    </div>
+    <a class="btn btn-main nav-cta" data-ripple data-magnet href="https://wa.me/18294803839?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20en%20trading%20binaire." target="_blank" rel="noopener"><span class="dot"><svg class="ico"><use href="#i-chat"/></svg></span>Je m'inscris</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="links"><i></i></button>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="blob g"></div><div class="blob r"></div>
+  <div class="wrap">
+    <div>
+      <div class="pill"><b></b>Formation en direct, début le 02 novembre 2026</div>
+      <h1>
+        <span class="ln"><span>Apprends à trader</span></span>
+        <span class="ln"><span>le binaire, avec</span></span>
+        <span class="ln"><span>méthode.</span></span>
+      </h1>
+      <p class="lead">Deux semaines de cours pour passer de l'ouverture du compte broker à ton propre plan de trading. Du lundi au vendredi, une heure par soir.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" data-ripple data-magnet href="https://wa.me/18294803839?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20en%20trading%20binaire." target="_blank" rel="noopener"><span class="dot"><svg class="ico"><use href="#i-chat"/></svg></span>Je m'inscris</a>
+        <a class="btn btn-line" data-ripple href="#programme">Voir le programme</a>
+      </div>
+    </div>
+    <aside class="clock" aria-label="Compte à rebours">
+      <h3>La formation commence dans</h3>
+      <div class="count" id="count" aria-live="off">
+        <div><strong id="cd">00</strong><small>jours</small></div>
+        <div><strong id="ch">00</strong><small>heures</small></div>
+        <div><strong id="cm">00</strong><small>min</small></div>
+        <div><strong id="cs">00</strong><small>sec</small></div>
+      </div>
+      <div class="rows">
+        <p><span>Durée</span><b>2 semaines</b></p>
+        <p><span>Jours</span><b>Lundi au vendredi</b></p>
+        <p><span>Horaire</span><b>07 h – 08 h PM</b></p>
+        <p><span>Participation</span><b>70 $</b></p>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<div class="tape" aria-hidden="true">
+  <div class="tape-track" id="track">
+    <span><i class="up">▲</i>Compte broker</span><span><i class="dn">▼</i>Wallet, dépôts &amp; retraits</span><span><i class="up">▲</i>Interface de trading</span><span><i class="dn">▼</i>Bougies &amp; tendances</span><span><i class="up">▲</i>Money Management</span><span><i class="dn">▼</i>Psychologie &amp; discipline</span><span><i class="up">▲</i>Plan de trading</span><span><i class="dn">▼</i>Stratégies</span><span><i class="up">▲</i>Sécurité</span>
+  </div>
+</div>
+
+<section class="block what" id="quoi">
+  <div class="wrap">
+    <h2 class="reveal">Le trading binaire, en clair.</h2>
+    <div>
+      <p class="scrub" id="scrub">Le trading binaire consiste à prédire si le prix d'un actif sera plus haut ou plus bas après une durée choisie à l'avance. Si ta prédiction est juste, tu gagnes un pourcentage de ta mise. Si elle est fausse, tu perds ta mise. C'est simple à comprendre, mais il faut de la méthode, de la discipline et une bonne gestion du capital.</p>
+      <div class="duo">
+        <div class="tile up"><span class="tri"></span><h3>Hausse</h3><p>Tu penses que le prix finira plus haut que ton point d'entrée.</p></div>
+        <div class="tile dn"><span class="tri"></span><h3>Baisse</h3><p>Tu penses que le prix finira plus bas que ton point d'entrée.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block prog" id="programme">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="reveal">Au programme</h2>
+      <p class="lead reveal">Neuf modules, de l'ouverture du compte jusqu'à ton plan de trading. Fais défiler pour les découvrir.</p>
+    </div>
+    <div class="stack" id="stack">
+      <article class="scard" style="--i:0"><div class="no"><b>1</b>sur 9</div><h3>Création &amp; gestion du compte broker</h3><p>Ouvre ton compte, configure-le et apprends à le gérer sans te tromper.</p></article>
+      <article class="scard t2" style="--i:1"><div class="no"><b>2</b>sur 9</div><h3>Wallet, dépôts &amp; retraits</h3><p>Comprends comment l'argent entre et sort de ton compte, en toute sécurité.</p></article>
+      <article class="scard" style="--i:2"><div class="no"><b>3</b>sur 9</div><h3>Maîtrise de l'interface de trading</h3><p>Prends en main la plateforme pour passer tes ordres sans hésiter.</p></article>
+      <article class="scard t3" style="--i:3"><div class="no"><b>4</b>sur 9</div><h3>Lecture des bougies &amp; tendances</h3><p>Apprends à lire le marché et à repérer la direction des prix.</p></article>
+      <article class="scard t2" style="--i:4"><div class="no"><b>5</b>sur 9</div><h3>Gestion du capital</h3><p>Le Money Management : protège ton capital avant de chercher à le faire grandir.</p></article>
+      <article class="scard" style="--i:5"><div class="no"><b>6</b>sur 9</div><h3>Psychologie &amp; discipline du trader</h3><p>Garde la tête froide et respecte tes règles, même après une perte.</p></article>
+      <article class="scard t3" style="--i:6"><div class="no"><b>7</b>sur 9</div><h3>Construction d'un plan de trading</h3><p>Écris ton propre plan : quand entrer, combien miser, quand t'arrêter.</p></article>
+      <article class="scard t2" style="--i:7"><div class="no"><b>8</b>sur 9</div><h3>Stratégies de trading</h3><p>Découvre des stratégies et apprends à les appliquer avec méthode.</p></article>
+      <article class="scard" style="--i:8"><div class="no"><b>9</b>sur 9</div><h3>Sécurité &amp; bonnes pratiques</h3><p>Évite les pièges, protège ton compte et tes informations.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block join" id="inscription">
+  <div class="wrap">
+    <div>
+      <h2 class="reveal">S'inscrire prend cinq minutes.</h2>
+      <p class="lead reveal">Tout se passe par WhatsApp. Tu poses tes questions, tu confirmes ta place, et tu reçois les informations pour le premier cours.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" data-ripple data-magnet href="https://wa.me/18294803839?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20en%20trading%20binaire." target="_blank" rel="noopener"><span class="dot"><svg class="ico"><use href="#i-chat"/></svg></span>Écrire sur WhatsApp</a>
+      </div>
+    </div>
+    <div class="tl" id="tl">
+      <div class="tl-fill" id="tlfill"></div>
+      <div class="st"><span class="n">1</span><h3>Contacte-nous</h3><p>Écris-nous sur WhatsApp au +1 829 480-3839.</p></div>
+      <div class="st"><span class="n">2</span><h3>Pose tes questions</h3><p>On répond à tout avant que tu t'engages.</p></div>
+      <div class="st"><span class="n">3</span><h3>Règle ta participation</h3><p>70 $ pour les deux semaines de formation.</p></div>
+      <div class="st"><span class="n">4</span><h3>Rejoins le premier cours</h3><p>Le lundi 02 novembre 2026, de 07 h à 08 h PM.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block risks" id="risques">
+  <div class="wrap">
+    <div class="risk reveal">
+      <div>
+        <h2>À lire avant de t'inscrire.</h2>
+        <p class="lead">Le trading binaire comporte des risques élevés. Mieux vaut le savoir avant de commencer que de le découvrir après.</p>
+      </div>
+      <ul>
+        <li><strong>Tu peux perdre tout le capital</strong> que tu investis. N'utilise jamais l'argent dont tu as besoin pour vivre ou payer tes factures.</li>
+        <li><strong>Aucun gain n'est garanti.</strong> Les résultats dépendent de la discipline, de l'expérience et du marché.</li>
+        <li><strong>Cette formation est éducative.</strong> Elle ne constitue ni un conseil financier, ni une promesse de revenus.</li>
+        <li><strong>Vérifie la réglementation de ton pays.</strong> Le trading binaire est restreint ou interdit à certains endroits.</li>
+        <li><strong>Commence en compte démo,</strong> puis avec de petites sommes.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block price" id="tarif">
+  <div class="wrap">
+    <h2 class="reveal">Une seule formule.</h2>
+    <div class="ring reveal">
+      <div class="pc">
+        <span class="tag">Participation</span>
+        <div class="amount"><sup>$</sup><span id="amt" data-count="70">70</span></div>
+        <ul class="inc" id="inc">
+          <li><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg>Neuf modules, du compte broker au plan de trading</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg>Deux semaines de cours, du lundi au vendredi</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg>Séances de 07 h à 08 h PM</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg>Début le 02 novembre 2026</li>
+        </ul>
+        <a class="btn btn-light" data-ripple data-magnet href="https://wa.me/18294803839?text=Bonjour%2C%20je%20veux%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20en%20trading%20binaire." target="_blank" rel="noopener"><span class="dot"><svg class="ico"><use href="#i-chat"/></svg></span>Réserver ma place</a>
+        <p class="note">Le paiement se confirme avec nous sur WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block faq" id="faq">
+  <div class="wrap">
+    <h2 class="reveal">Questions fréquentes</h2>
+    <div>
+      <div class="qa open"><button aria-expanded="true">Je suis débutant, je peux suivre ?<span class="pm"></span></button><div class="ans"><div><p>Oui. Le programme commence par la base : le compte broker, le wallet et l'interface, avant d'aborder les bougies, la gestion du capital et les stratégies.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Est-ce que je vais gagner de l'argent ?<span class="pm"></span></button><div class="ans"><div><p>Nous ne promettons aucun gain. Tu apprends une méthode et une discipline, mais le trading reste risqué et tu peux perdre de l'argent.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Quand et à quelle heure ont lieu les cours ?<span class="pm"></span></button><div class="ans"><div><p>Du lundi au vendredi, de 07 h à 08 h PM, pendant deux semaines, à partir du 02 novembre 2026.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Comment payer ma participation ?<span class="pm"></span></button><div class="ans"><div><p>Écris-nous sur WhatsApp au +1 829 480-3839. Nous te confirmons les moyens de paiement disponibles et ton inscription.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contact">
+  <div class="wrap">
+    <div class="box reveal">
+      <h2>Rendez-vous le 2 novembre.</h2>
+      <p>Réserve ta place maintenant et pose-nous toutes tes questions.</p>
+      <a class="btn btn-light" data-ripple data-magnet href="https://wa.me/18294803839?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20en%20trading%20binaire." target="_blank" rel="noopener"><span class="dot"><svg class="ico"><use href="#i-chat"/></svg></span>Écrire sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#accueil" style="margin-bottom:14px"><svg class="ico" style="width:26px;height:30px"><use href="#i-logo"/></svg>Pocket Bip</a>
+      <p style="color:var(--muted);font-size:15px;max-width:320px">Formation en trading binaire, en direct, du lundi au vendredi.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="https://wa.me/18294803839" target="_blank" rel="noopener">+1 829 480-3839</a>
+      <a href="https://www.pocketbiptrading.online">www.pocketbiptrading.online</a>
+      <span class="l">Facebook : Pocket Bip trading</span>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="#programme">Programme</a>
+      <a href="#inscription">S'inscrire</a>
+      <a href="#risques">Risques</a>
+      <a href="#faq">Questions</a>
+    </div>
+    <p class="fine">Le trading binaire est une activité à haut risque pouvant entraîner la perte totale du capital investi. Ce contenu est éducatif et ne constitue pas un conseil en investissement. © 2026 Pocket Bip.</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/18294803839" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="ico"><use href="#i-chat"/></svg></a>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,c){return (c||document).querySelector(s)};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var clamp = function(v,a,b){return Math.max(a,Math.min(b,v))};
+
+  /* ticker: duplicate for a seamless loop */
+  var track = $('#track');
+  track.innerHTML += track.innerHTML;
+
+  /* mobile menu */
+  var burger = $('#burger'), links = $('#links');
+  burger.addEventListener('click', function(){
+    var o = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', o);
+  });
+  $$('#links a').forEach(function(a){a.addEventListener('click', function(){links.classList.remove('open');burger.setAttribute('aria-expanded','false')})});
+
+  /* countdown to 02 Nov 2026, 19:00 (Haiti, UTC-5) */
+  var target = new Date('2026-11-02T19:00:00-05:00').getTime();
+  var pad = function(n){return String(n).padStart(2,'0')};
+  function tick(){
+    var d = Math.max(0, target - Date.now());
+    $('#cd').textContent = pad(Math.floor(d/864e5));
+    $('#ch').textContent = pad(Math.floor(d%864e5/36e5));
+    $('#cm').textContent = pad(Math.floor(d%36e5/6e4));
+    $('#cs').textContent = pad(Math.floor(d%6e4/1e3));
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* scrubbed text */
+  var sc = $('#scrub'), words = [];
+  sc.innerHTML = sc.textContent.trim().split(/\s+/).map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
+  words = $$('.w', sc);
+
+  /* stacked cards */
+  var cards = $$('.scard');
+
+  /* timeline */
+  var tl = $('#tl'), fill = $('#tlfill'), steps = $$('.st', tl);
+
+  function onScroll(){
+    var vh = window.innerHeight;
+    var st = window.scrollY;
+    var h = document.documentElement.scrollHeight - vh;
+    $('#bar').style.transform = 'scaleX(' + (h > 0 ? st/h : 0) + ')';
+    $('#nav').classList.toggle('stuck', st > 20);
+
+    var r = sc.getBoundingClientRect();
+    var p = clamp((vh*0.82 - r.top) / (r.height + vh*0.1), 0, 1);
+    var n = Math.round(p * words.length);
+    words.forEach(function(w,i){w.classList.toggle('lit', i < n)});
+
+    if(!reduce && window.innerWidth > 0){
+      cards.forEach(function(c,i){
+        var cb = c.getBoundingClientRect().bottom, over = 0;
+        for(var j=i+1;j<cards.length;j++){
+          if(cards[j].getBoundingClientRect().top < cb - 40) over++;
+        }
+        c.style.transform = 'scale(' + (1 - Math.min(over,6)*0.022) + ')';
+      });
+    }
+
+    var tr = tl.getBoundingClientRect();
+    var prog = clamp((vh*0.62 - tr.top) / tr.height, 0, 1);
+    fill.style.height = (prog * (tr.height - 16)) + 'px';
+    steps.forEach(function(s){
+      var sr = s.getBoundingClientRect();
+      s.classList.toggle('on', sr.top < vh*0.62);
+    });
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ticking = true; requestAnimationFrame(function(){onScroll();ticking = false})}
+  }, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* reveals + count-up + check marks */
+  function countUp(el){
+    var end = +el.dataset.count;
+    if(reduce){el.textContent = end;return}
+    var t0 = null;
+    (function f(t){
+      if(!t0) t0 = t;
+      var k = clamp((t - t0)/1400, 0, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1-k,3)));
+      if(k < 1) requestAnimationFrame(f);
+    })(performance.now());
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');
+      if(e.target.id === 'amt') countUp(e.target);
+      io.unobserve(e.target);
+    });
+  }, {threshold:.2});
+  $$('.reveal, #inc').forEach(function(el){io.observe(el)});
+  var amt = $('#amt'); amt.textContent = '0'; io.observe(amt);
+  amt.classList.remove('reveal');
+  if(!('IntersectionObserver' in window)){amt.textContent = '70'}
+
+  /* accordion */
+  $$('.qa button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var q = b.parentNode, open = q.classList.contains('open');
+      $$('.qa').forEach(function(x){x.classList.remove('open');$('button',x).setAttribute('aria-expanded','false')});
+      if(!open){q.classList.add('open');b.setAttribute('aria-expanded','true')}
+    });
+  });
+
+  /* ripple + magnetic buttons */
+  $$('[data-ripple]').forEach(function(b){
+    b.addEventListener('pointerdown', function(e){
+      var r = b.getBoundingClientRect(), s = Math.max(r.width, r.height) * 2;
+      var sp = document.createElement('span');
+      sp.className = 'ripple';
+      sp.style.cssText = 'width:'+s+'px;height:'+s+'px;left:'+(e.clientX-r.left-s/2)+'px;top:'+(e.clientY-r.top-s/2)+'px';
+      b.appendChild(sp);
+      setTimeout(function(){sp.remove()}, 700);
+    });
+  });
+  if(!reduce && window.matchMedia('(hover:hover)').matches){
+    $$('[data-magnet]').forEach(function(b){
+      b.addEventListener('pointermove', function(e){
+        var r = b.getBoundingClientRect();
+        var x = (e.clientX - (r.left + r.width/2)) * .18, y = (e.clientY - (r.top + r.height/2)) * .28;
+        b.style.transform = 'translate('+x+'px,'+y+'px)';
+      });
+      b.addEventListener('pointerleave', function(){b.style.transform = ''});
+    });
+  }
+})();
+</script>
+</body>
+</html>
